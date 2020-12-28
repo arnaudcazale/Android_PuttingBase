@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/header_home"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_25sdp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/fragment_dashboard_llQuaterninos"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        style="@style/Style_ivDashboardMenu"
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/ic_quaterninos"/>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        style="@style/Style_tvDashboard"
+                        android:text="@string/quaternions"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/fragment_dashboard_llEuler"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        style="@style/Style_ivDashboardMenu"
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/ic_euler"/>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        style="@style/Style_tvDashboard"
+                        android:text="@string/euler"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/fragment_dashboard_llGravity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        style="@style/Style_ivDashboardMenu"
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/ic_gravity"/>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        style="@style/Style_tvDashboard"
+                        android:text="@string/gravity"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/fragment_dashboard_llGeneralSettings"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        style="@style/Style_ivDashboardMenu"
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/ic_general_setting"/>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        style="@style/Style_tvDashboard"
+                        android:text="@string/general_settings"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout
+            >
+    </ScrollView>
+
+
+</LinearLayout>

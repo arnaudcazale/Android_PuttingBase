@@ -1,0 +1,103 @@
+<resources>
+    <string name="app_name">MotionPuttingBase</string>
+    <string name="databasename">MotionXpert</string>
+
+    <string name="alert_tap_to_launch_motion_app">Tap to launch MotionApp.</string>
+    <string name="alert_title_enable_location">Enable Location</string>
+    <string name="alert_location_is_off">Your Locations Settings is set to \'Off\'. Please Enable Location to use this app</string>
+    <string name="alert_location_settings">Location Settings</string>
+    <string name="alert_bluetooth_is_not_supported">BLE Not Supported</string>
+    <string name="alert_device_not_found">Devices not found</string>
+    <string name="alert_unable_to_connect_two_devices">Unable to connect to the %1$d MX, check and restart. The session will close</string>
+    <string name="alert_check_frequency">Check Frequency. The app will close</string>
+    <string name="alert_value_updated">Value Updated.</string>
+    <string name="alert_connection_error">Connection error. Check and restart. The app will close</string>
+    <string name="alert_please_connect_two_thingy_devices">Please connect with %1$d Thingy devices.</string>
+    <string name="alert_value_saved">Value Saved.</string>
+    <string name="alert_min_value_cannot_greater_than_max">Min values cannot greater than Max values</string>
+    <string name="alert_max_value_cannot_less_than_min">Max values cannot less than Min values</string>
+    <string name="alert_do_you_really_want_to_stop_capture">Do you really want to stop the capture?</string>
+
+    <string name="connect">Connect</string>
+    <string name="connected">Connected</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+
+    <string name="confirm">Confirm</string>
+    <string name="time_span">Time Span</string>
+    <string name="uLab1">Motion</string>
+    <string name="uLab2">Motion</string>
+    <string name="uLab3">Motion</string>
+    <string name="uLab4">Motion</string>
+    <string name="uLabFSR1">FSR back</string>
+    <string name="uLabFSR2">FSR stupright</string>
+    <string name="uLabFSR3">FSR stupleft</string>
+    <string name="uLabFSR4">FSR head</string>
+    <string name="chk_V">V</string>
+    <string name="chk_F">F</string>
+    <string name="chk_FC">FC</string>
+    <string name="chk_Gravity">G</string>
+    <string name="chk_Euler">E</string>
+    <string name="chk_Heading">H</string>
+    <string name="chk_Acc">ACC</string>
+    <string name="chk_Quat">QUAT</string>
+    <string name="command_text">*start v 15</string>
+    <string name="angle_x1_x2">Angle X1/X2</string>
+    <string name="connecting">Connecting…</string>
+    <string name="please_wait_while_device_is_calibrating">Please wait while device is calibrating</string>
+    <string name="scanning_devices">Scanning devices…</string>
+    <string name="please_wait">Please wait…</string>
+
+    <!--Taken from Thingy SDK-->
+    <string name="thingy_notification_text">%s is still connected</string>
+
+    <string name="one_connected">%s  is connected</string>
+    <string name="two_connected">%d are connected</string>
+    <string name="one_disconnected">%s  is disconnected</string>
+    <string name="two_disconnected">%d are disconnected</string>
+    <string name="default_thingy_name">Thingy:52</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="quaternions">Quaternions</string>
+    <string name="euler">Euler</string>
+    <string name="euler_data">Euler Data</string>
+    <string name="gravity">Gravity</string>
+    <string name="gravity_data">Gravity Data</string>
+    <string name="general_settings">General Settings</string>
+    <string name="xnode_selection">Xnode Selection</string>
+    <string name="motion_frequency">Motion Frequency</string>
+    <string name="current_frequency">Current Frequency</string>
+    <string name="set_frequency">Set Frequency</string>
+    <string name="set_name">Set Name</string>
+    <string name="quaternions_configuration">Quaternions Configuration</string>
+    <string name="euler_configuration">Euler Configuration</string>
+    <string name="gravity_configuration">Gravity Configuration</string>
+
+    <plurals name="thingy_notification_text_nothing_connected">
+        <item quantity="one">%s  is disconnected</item>
+        <item quantity="two">%d are disconnected</item>
+        <item quantity="few">%d are disconnected</item>
+        <item quantity="other">%d are disconnected</item>
+        <item quantity="many">%d are disconnected</item>
+    </plurals>
+
+    <string name="start_calibration">Start Calibration</string>
+    <string name="calibration">Calibration</string>
+    <string name="calibrated">Calibrated</string>
+    <string name="parameters">Parameters</string>
+    <string name="min">Min</string>
+    <string name="max">Max</string>
+    <string name="warning">Warning</string>
+    <string name="r">R</string>
+    <string name="p">P</string>
+    <string name="y">Y</string>
+    <string name="alert_location_permission_needed">Location permission needed.</string>
+
+    <string name="trajectory_impact">Impact Trajectory </string>
+    <string name="position_impact">Impact Position</string>
+    <string name="regularity">Regularity</string>
+    <string name="acceleration_impact">Impact Acceleration</string>
+    <string name="speed_correlation">Speed Correlation</string>
+
+</resources>

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragment.GeneralSettingFragment">
+
+    <include layout="@layout/header_back"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_15sdp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:animateLayoutChanges="true"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/Style_tvLabel"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="@string/xnode_selection"/>
+
+                <android.support.v7.widget.AppCompatSpinner
+                    android:id="@+id/fragment_general_setting_spDevices"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_marginEnd="@dimen/_minus5sdp"
+                    android:spinnerMode="dropdown"/>
+
+                <View
+                    style="@style/Style_vDivider"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_5sdp"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/fragment_general_setting_tvConnect"
+                    style="@style/Style_tvConnect"
+                    android:drawableEnd="@drawable/ic_connect_small"
+                    android:text="@string/connect"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/fragment_general_setting_tvConnected"
+                    style="@style/Style_tvLabel"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text="@string/connected"
+                    android:visibility="invisible"
+                    android:textSize="@dimen/_13ssp"/>
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fragment_general_setting_SettingName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/Style_tvLabel"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/set_name"
+                    android:textColor="@color/colorTvValue"
+                    android:textSize="@dimen/_13ssp"/>
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/fragment_general_setting_changeName_text"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:textSize="25sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_15sdp">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/fragment_general_setting_tvCancelName"
+                    style="@style/Style_tvCancel"
+                    android:foreground="@drawable/bg_selectable_item"
+                    android:text="@string/cancel"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/fragment_general_setting_tvConfirmName"
+                    style="@style/Style_tvConfirm"
+                    android:text="@string/confirm"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fragment_general_setting_llMotionFrq"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@drawable/bg_card"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        style="@style/Style_tvLabel"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="@string/motion_frequency"
+                        android:textColor="@color/colorTvValue"
+                        android:textSize="@dimen/_13ssp"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:gravity="start|center"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            style="@style/Style_tvLabel"
+                            android:layout_marginTop="0dp"
+                            android:text="@string/current_frequency"/>
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/fragment_general_setting_tvCurrentFrq"
+                            style="@style/Style_tvLabel"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginStart="0dp"
+                            android:textColor="@color/colorTvValue"
+                            android:textSize="@dimen/_18ssp"
+                            tools:text="50 Hz"/>
+                    </LinearLayout>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        style="@style/Style_tvLabel"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:text="@string/set_frequency"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_5sdp">
+
+                        <android.support.v7.widget.AppCompatCheckBox
+                            android:id="@+id/fragment_general_setting_cb10"
+                            style="@style/Style_tvFrequency"
+                            android:text="10"/>
+
+                        <android.support.v7.widget.AppCompatCheckBox
+                            android:id="@+id/fragment_general_setting_cb15"
+                            style="@style/Style_tvFrequency"
+                            android:text="15"/>
+
+                        <android.support.v7.widget.AppCompatCheckBox
+                            android:id="@+id/fragment_general_setting_cb20"
+                            style="@style/Style_tvFrequency"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="20"/>
+
+                        <android.support.v7.widget.AppCompatCheckBox
+                            android:id="@+id/fragment_general_setting_cb50"
+                            style="@style/Style_tvFrequency"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="50"/>
+
+                        <android.support.v7.widget.AppCompatCheckBox
+                            android:id="@+id/fragment_general_setting_cb100"
+                            style="@style/Style_tvFrequency"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="100"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_15sdp">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/fragment_general_setting_tvCancel"
+                        style="@style/Style_tvCancel"
+                        android:foreground="@drawable/bg_selectable_item"
+                        android:text="@string/cancel"/>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/fragment_general_setting_tvConfirm"
+                        style="@style/Style_tvConfirm"
+                        android:text="@string/confirm"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

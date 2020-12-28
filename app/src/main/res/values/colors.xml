@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FAFBFB</color>
+    <color name="colorPrimaryDark">#E3E3E3</color>
+    <color name="colorAccent">#9E9EAB</color>
+
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlack">#000000</color>
+
+    <color name="colorGreen">#7ED321</color>
+    <color name="colorRed">#FF0C2A</color>
+    <color name="colorBlueGrey">#634A4A4A</color>
+    <color name="colorPurple">#242448</color>
+    <color name="colorBlue">#006DFF</color>
+
+    <color name="colorOrangeDark">#F79E0A</color>
+    <color name="colorOrangeLight">#FAB411</color>
+
+    <color name="colorGreenDark">#429321</color>
+    <color name="colorGreenLight">#76DA58</color>
+
+    <color name="colorRedDark">#FF0C2A</color>
+    <color name="colorRedLight">#990000</color>
+
+    <color name="colorTvDashboard">#474646</color>
+    <color name="colorDivider">#9B9B9B</color>
+    <color name="colorTvValue">#4A4A4A</color>
+    <color name="colorTvBGRounded">#BCB9B9</color>
+
+    <drawable name="bgButtonSelector">@drawable/ic_connect_selector</drawable>
+</resources>

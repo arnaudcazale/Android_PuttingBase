@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true">
+        <layer-list>
+            <item>
+                <bitmap android:src="@drawable/bg_round" android:tint="#990000"/>
+            </item>
+
+            <item
+                android:width="@dimen/_17sdp"
+                android:height="@dimen/_17sdp"
+                android:bottom="@dimen/_3sdp"
+                android:drawable="@drawable/ic_stop_white"
+                android:gravity="center"
+                android:start="@dimen/_1sdp">
+
+            </item>
+        </layer-list>
+    </item>
+
+    <item>
+        <layer-list>
+            <item>
+                <bitmap android:src="@drawable/bg_round"/>
+            </item>
+
+            <item
+                android:width="@dimen/_17sdp"
+                android:height="@dimen/_17sdp"
+                android:bottom="@dimen/_3sdp"
+                android:drawable="@drawable/ic_stop"
+                android:gravity="center"
+                android:start="@dimen/_1sdp">
+            </item>
+        </layer-list>
+    </item>
+</selector>

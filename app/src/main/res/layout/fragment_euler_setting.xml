@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/header_back"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_15sdp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.AppCompatSpinner
+                    android:id="@+id/fragment_gravity_setting_spConnectedDevices"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_marginEnd="@dimen/_minus5sdp"
+                    android:spinnerMode="dropdown"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/Style_tvLabel"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/calibration"
+                    android:textColor="@color/colorTvValue"
+                    android:textSize="@dimen/_12ssp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:gravity="center">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/fragment_gravity_setting_tvStartCalibrate"
+                        style="@style/Style_tvConnect"
+                        android:layout_marginBottom="0dp"
+                        android:layout_marginTop="0dp"
+                        android:drawableEnd="@drawable/ic_start_small"
+                        android:foreground="@drawable/bg_selectable_item"
+                        android:text="@string/start_calibration"/>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/fragment_gravity_setting_tvCalibrated"
+                        style="@style/Style_tvLabel"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginTop="0dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="@string/calibrated"
+                        android:textColor="@color/colorRedLight"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="italic"
+                        android:visibility="invisible"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/Style_tvLabel"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/parameters"
+                    android:textColor="@color/colorTvValue"
+                    android:textSize="@dimen/_12ssp"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/fragment_gravity_setting_tvUlab1"
+                    style="@style/Style_tvLabel"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="@color/colorRedLight"
+                    android:textSize="@dimen/_10ssp"
+                    tools:text="Xpert 1"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            style="@style/Style_tvLabel"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/min"
+                            android:textColor="@color/colorTvValue"
+                            android:textSize="@dimen/_10ssp"/>
+
+                        <LinearLayout
+                            android:id="@+id/fragment_gravity_setting_llUlab1Min"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <android.support.v7.widget.AppCompatTextView
+                                android:id="@+id/fragment_gravity_setting_tvUlab1MinR"
+                                style="@style/Style_tvLabel.Style_tvValueSetting"
+                                tools:text="05"/>
+
+                            <android.support.v7.widget.AppCompatTextView
+                                android:id="@+id/fragment_gravity_setting_tvUlab1MinP"
+                                style="@style/Style_tvLabel.Style_tvValueSetting"
+                                tools:text="05"/>
+
+                            <android.support.v7.widget.AppCompatTextView
+                                android:id="@+id/fragment_gravity_setting_tvUlab1MinY"
+                                style="@style/Style_tvLabel.Style_tvValueSetting"
+                                tools:text="05"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <android.support.v7.widget.AppCompatTextView
+                                style="@style/Style_tvLabel.Style_tvValueTitleSetting"
+                                android:text="@string/r"/>
+
+                            <android.support.v7.widget.AppCompatTextView
+                                style="@style/Style_tvLabel.Style_tvValueTitleSetting"
+                                android:text="@string/p"/>
+
+                            <android.support.v7.widget.AppCompatTextView
+                                style="@style/Style_tvLabel.Style_tvValueTitleSetting"
+                                android:text="@string/y"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            style="@style/Style_tvLabel"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/max"
+                            android:textColor="@color/colorTvValue"
+                            android:textSize="@dimen/_10ssp"/>
+
+                        <LinearLayout
+                            android:id="@+id/fragment_gravity_setting_llUlab1Max"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <android.support.v7.widget.AppCompatTextView
+                                android:id="@+id/fragment_gravity_setting_tvUlab1MaxR"
+                                style="@style/Style_tvLabel.Style_tvValueSetting"
+                                tools:text="05"/>
+
+                            <android.support.v7.widget.AppCompatTextView
+                                android:id="@+id/fragment_gravity_setting_tvUlab1MaxP"
+                                style="@style/Style_tvLabel.Style_tvValueSetting"
+                                tools:text="05"/>
+
+                            <android.support.v7.widget.AppCompatTextView
+                                android:id="@+id/fragment_gravity_setting_tvUlab1MaxY"
+                                style="@style/Style_tvLabel.Style_tvValueSetting"
+                                tools:text="05"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <android.support.v7.widget.AppCompatTextView
+                                style="@style/Style_tvLabel.Style_tvValueTitleSetting"
+                                android:text="@string/r"/>
+
+                            <android.support.v7.widget.AppCompatTextView
+                                style="@style/Style_tvLabel.Style_tvValueTitleSetting"
+                                android:text="@string/p"/>
+
+                            <android.support.v7.widget.AppCompatTextView
+                                style="@style/Style_tvLabel.Style_tvValueTitleSetting"
+                                android:text="@string/y"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/fragment_gravity_setting_llUlabX1_X2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/fragment_gravity_setting_tvUlabX1_X2"
+                        style="@style/Style_tvLabel"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:fontFamily="@font/roboto_medium"
+                        android:textColor="@color/colorRedLight"
+                        android:textSize="@dimen/_10ssp"
+                        tools:text="X1-X2"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <android.support.v7.widget.AppCompatTextView
+                                style="@style/Style_tvLabel"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:fontFamily="@font/roboto_medium"
+                                android:text="@string/min"
+                                android:textColor="@color/colorTvValue"
+                                android:textSize="@dimen/_10ssp"/>
+
+                            <LinearLayout
+                                android:id="@+id/fragment_gravity_setting_llUlabX1_X2Min"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <android.support.v7.widget.AppCompatTextView
+                                    android:id="@+id/fragment_gravity_setting_tvUlabX1_X2MinR"
+                                    style="@style/Style_tvLabel.Style_tvValueSetting"
+                                    tools:text="05"/>
+
+                                <android.support.v7.widget.AppCompatTextView
+                                    android:id="@+id/fragment_gravity_setting_tvUlabX1_X2MinP"
+                                    style="@style/Style_tvLabel.Style_tvValueSetting"
+                                    tools:text="05"/>
+
+                                <android.support.v7.widget.AppCompatTextView
+                                    android:id="@+id/fragment_gravity_setting_tvUlabX1_X2MinY"
+                                    style="@style/Style_tvLabel.Style_tvValueSetting"
+                                    tools:text="05"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/_10sdp">
+
+                                <android.support.v7.widget.AppCompatTextView
+                                    style="@style/Style_tvLabel.Style_tvValueTitleSetting"
+                                    android:text="@string/r"/>
+
+                                <android.support.v7.widget.AppCompatTextView
+                                    style="@style/Style_tvLabel.Style_tvValueTitleSetting"
+                                    android:text="@string/p"/>
+
+                                <android.support.v7.widget.AppCompatTextView
+                                    style="@style/Style_tvLabel.Style_tvValueTitleSetting"
+                                    android:text="@string/y"/>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_20sdp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <android.support.v7.widget.AppCompatTextView
+                                style="@style/Style_tvLabel"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:fontFamily="@font/roboto_medium"
+                                android:text="@string/max"
+                                android:textColor="@color/colorTvValue"
+                                android:textSize="@dimen/_10ssp"/>
+
+                            <LinearLayout
+                                android:id="@+id/fragment_gravity_setting_llUlabX1_X2Max"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <android.support.v7.widget.AppCompatTextView
+                                    android:id="@+id/fragment_gravity_setting_tvUlabX1_X2MaxR"
+                                    style="@style/Style_tvLabel.Style_tvValueSetting"
+                                    tools:text="05"/>
+
+                                <android.support.v7.widget.AppCompatTextView
+                                    android:id="@+id/fragment_gravity_setting_tvUlabX1_X2MaxP"
+                                    style="@style/Style_tvLabel.Style_tvValueSetting"
+                                    tools:text="05"/>
+
+                                <android.support.v7.widget.AppCompatTextView
+                                    android:id="@+id/fragment_gravity_setting_tvUlabX1_X2MaxY"
+                                    style="@style/Style_tvLabel.Style_tvValueSetting"
+                                    tools:text="05"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/_10sdp">
+
+                                <android.support.v7.widget.AppCompatTextView
+                                    style="@style/Style_tvLabel.Style_tvValueTitleSetting"
+                                    android:text="@string/r"/>
+
+                                <android.support.v7.widget.AppCompatTextView
+                                    style="@style/Style_tvLabel.Style_tvValueTitleSetting"
+                                    android:text="@string/p"/>
+
+                                <android.support.v7.widget.AppCompatTextView
+                                    style="@style/Style_tvLabel.Style_tvValueTitleSetting"
+                                    android:text="@string/y"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/Style_tvLabel"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/warning"
+                    android:textColor="@color/colorTvValue"
+                    android:textSize="@dimen/_12ssp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        style="@style/Style_tvLabel"
+                        android:layout_width="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="@string/min"
+                        android:textColor="@color/colorTvValue"
+                        android:textSize="@dimen/_10ssp"/>
+
+                    <android.support.v7.widget.SwitchCompat
+                        android:id="@+id/fragment_gravity_setting_swMin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/MySwitchCompat"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        style="@style/Style_tvLabel"
+                        android:layout_width="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="@string/max"
+                        android:textColor="@color/colorTvValue"
+                        android:textSize="@dimen/_10ssp"/>
+
+                    <android.support.v7.widget.SwitchCompat
+                        android:id="@+id/fragment_gravity_setting_swMax"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/MySwitchCompat"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_15sdp">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/fragment_gravity_setting_tvCancel"
+                    style="@style/Style_tvCancel"
+                    android:foreground="@drawable/bg_selectable_item"
+                    android:text="@string/cancel"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/fragment_gravity_setting_tvConfirm"
+                    style="@style/Style_tvConfirm"
+                    android:foreground="@drawable/bg_selectable_item"
+                    android:text="@string/confirm"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

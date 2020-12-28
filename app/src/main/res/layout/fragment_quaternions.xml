@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    tools:context=".fragment.QuaternionsFragment">
+
+    <include layout="@layout/header_back_with_setting"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:background="@drawable/bg_card"
+        android:fadeScrollbars="true"
+        android:overScrollMode="ifContentScrolls">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/command_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:enabled="false"
+                android:background="@drawable/border"
+                android:gravity="center"
+                android:text="@string/command_text"
+                android:singleLine="true"
+                android:textSize="25sp"
+                android:visibility="gone"/>
+
+            <View style="@style/Style_vDivider"
+                android:visibility="gone"/>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:id="@+id/radioGroup_motion"
+                android:visibility="gone">
+
+                <android.support.v7.widget.AppCompatRadioButton
+                    android:id="@+id/chkGravity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:checked="true"
+                    android:text="@string/chk_Gravity" />
+
+                <android.support.v7.widget.AppCompatRadioButton
+                    android:id="@+id/chkEuler"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:text="@string/chk_Euler" />
+
+                <android.support.v7.widget.AppCompatRadioButton
+                    android:id="@+id/chkHeading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:text="@string/chk_Heading" />
+
+                <android.support.v7.widget.AppCompatRadioButton
+                    android:id="@+id/chkAcc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:text="@string/chk_Acc" />
+
+                <android.support.v7.widget.AppCompatRadioButton
+                    android:id="@+id/chkQuat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:text="@string/chk_Quat" />
+
+            </RadioGroup>
+
+            <View style="@style/Style_vDivider"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.ulab.motionapp.common.CheckableImageView
+                    android:id="@+id/ivSend"
+                    style="@style/Style_civButton"
+                    android:layout_width="102dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_start_selector"
+                    android:visibility="gone"/>
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/ev_command_text"
+                    android:layout_width="233dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:textSize="25sp"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/Style_tvLabel"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/trajectory_impact"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tvImpact_traj"
+                style="@style/Style_tvValue" />
+
+            <View style="@style/Style_vDivider"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/Style_tvLabel"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/position_impact"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tvImpact_pos"
+                style="@style/Style_tvValue" />
+
+            <View style="@style/Style_vDivider"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/Style_tvLabel"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/acceleration_impact"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tvImpact_acc"
+                style="@style/Style_tvValue" />
+
+            <View style="@style/Style_vDivider"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/Style_tvLabel"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/speed_correlation"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tvImpact_speed"
+                style="@style/Style_tvValue" />
+
+            <View style="@style/Style_vDivider"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/Style_tvLabel"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/regularity"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tvImpact_reg"
+                style="@style/Style_tvValue" />
+
+            <View style="@style/Style_vDivider"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/activity_home_tvUlab1Label"
+                style="@style/Style_tvLabel"
+                android:text="@string/uLab1"
+                android:visibility="gone"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/activity_home_tvUlab1"
+                style="@style/Style_tvValue"
+                android:maxLines="2"
+                android:minLines="2"
+                tools:text="10.123456,10.123456,10.123456,10.123456"
+                android:visibility="gone"/>
+
+            <View style="@style/Style_vDivider"
+                android:visibility="gone"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/activity_home_tvUlab2Label"
+                style="@style/Style_tvLabel"
+                android:text="@string/uLab2"
+                android:visibility="gone"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/activity_home_tvUlab2"
+                style="@style/Style_tvValue"
+                android:maxLines="2"
+                android:minLines="2"
+                tools:text="10.123456,10.123456,10.123456,10.123456"
+                android:visibility="gone"/>
+
+            <View style="@style/Style_vDivider"
+                android:visibility="gone"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/activity_home_tvUlab3Label"
+                style="@style/Style_tvLabel"
+                android:text="@string/uLab3"
+                android:visibility="gone"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/activity_home_tvUlab3"
+                style="@style/Style_tvValue"
+                android:maxLines="2"
+                android:minLines="2"
+                tools:text="10.123456,10.123456,10.123456,10.123456"
+                android:visibility="gone"/>
+
+            <View style="@style/Style_vDivider"
+                android:visibility="gone"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/activity_home_tvUlab4Label"
+                style="@style/Style_tvLabel"
+                android:text="@string/uLab4"
+                android:visibility="gone"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/activity_home_tvUlab4"
+                style="@style/Style_tvValue"
+                android:maxLines="2"
+                android:minLines="2"
+                tools:text="10.123456,10.123456,10.123456,10.123456"
+                android:visibility="gone"/>
+
+            <View
+                style="@style/Style_vDivider"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:visibility="gone"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/activity_home_tvUlab1FSRLabel"
+                    style="@style/Style_tvLabel"
+                    android:text="@string/uLabFSR1"
+                    android:visibility="gone"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/activity_home_tvUlab1FSR"
+                    style="@style/Style_tvValue"
+                    android:maxLines="2"
+                    android:minLines="2"
+                    tools:text="10.123456,10.123456,10.123456,10.123456"
+                    android:visibility="gone"/>
+
+                <View style="@style/Style_vDivider"
+                    android:visibility="gone"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/activity_home_tvUlab2FSRLabel"
+                    style="@style/Style_tvLabel"
+                    android:text="@string/uLabFSR2"
+                    android:visibility="gone"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/activity_home_tvUlab2FSR"
+                    style="@style/Style_tvValue"
+                    android:maxLines="2"
+                    android:minLines="2"
+                    tools:text="10.123456,10.123456,10.123456,10.123456"
+                    android:visibility="gone"/>
+
+                <View style="@style/Style_vDivider"
+                    android:visibility="gone"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/activity_home_tvUlab3FSRLabel"
+                    style="@style/Style_tvLabel"
+                    android:text="@string/uLabFSR3"
+                    android:visibility="gone"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/activity_home_tvUlab3FSR"
+                    style="@style/Style_tvValue"
+                    android:maxLines="2"
+                    android:minLines="2"
+                    tools:text="10.123456,10.123456,10.123456,10.123456"
+                    android:visibility="gone"/>
+
+                <View
+                    style="@style/Style_vDivider"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:visibility="gone"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/activity_home_tvUlab4FSRLabel"
+                    style="@style/Style_tvLabel"
+                    android:text="@string/uLabFSR4"
+                    android:visibility="gone"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/activity_home_tvUlab4FSR"
+                    style="@style/Style_tvValue"
+                    android:maxLines="2"
+                    android:minLines="2"
+                    tools:text="10.123456,10.123456,10.123456,10.123456"
+                    android:visibility="gone"/>
+
+                <View
+                    style="@style/Style_vDivider"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

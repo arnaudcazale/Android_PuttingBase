@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    tools:context=".fragment.EulerFragment">
+
+    <include layout="@layout/header_back_with_setting"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_25sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:background="@drawable/bg_card"
+        android:fadeScrollbars="true"
+        android:overScrollMode="ifContentScrolls">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/Style_tvLabel"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/time_span"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/activity_home_tvTime"
+                style="@style/Style_tvValue"
+                tools:text="45:50 min"/>
+
+            <View style="@style/Style_vDivider"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/activity_home_tvUlab1Label"
+                style="@style/Style_tvLabel"
+                android:text="@string/uLab1"/>
+
+            <LinearLayout
+                android:id="@+id/fragment_euler_ll1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:visibility="invisible"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/tvUlab1_1"
+                    style="@style/Style_tvValueRounded"
+                    tools:text="05"/>
+
+                <TextView
+                    android:id="@+id/tvUlab1_2"
+                    style="@style/Style_tvValueRounded"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    tools:text="05"/>
+
+                <TextView
+                    android:id="@+id/tvUlab1_3"
+                    style="@style/Style_tvValueRounded"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    tools:text="05"/>
+
+            </LinearLayout>
+
+            <View style="@style/Style_vDivider"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/activity_home_tvUlab2Label"
+                style="@style/Style_tvLabel"
+                android:text="@string/uLab2"/>
+
+            <LinearLayout
+                android:id="@+id/fragment_euler_ll2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:visibility="invisible"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/tvUlab2_1"
+                    style="@style/Style_tvValueRounded"
+                    tools:text="05"/>
+
+                <TextView
+                    android:id="@+id/tvUlab2_2"
+                    style="@style/Style_tvValueRounded"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    tools:text="05"/>
+
+                <TextView
+                    android:id="@+id/tvUlab2_3"
+                    style="@style/Style_tvValueRounded"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    tools:text="05"/>
+            </LinearLayout>
+
+            <View style="@style/Style_vDivider"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/activity_home_tvAngle"
+                style="@style/Style_tvLabel"
+                android:text="@string/angle_x1_x2"/>
+
+            <LinearLayout
+                android:id="@+id/fragment_euler_ll3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:visibility="invisible"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/tvAngle_1"
+                    style="@style/Style_tvValueRounded"
+                    tools:text="05"/>
+
+                <TextView
+                    android:id="@+id/tvAngle_2"
+                    style="@style/Style_tvValueRounded"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    tools:text="05"/>
+
+                <TextView
+                    android:id="@+id/tvAngle_3"
+                    style="@style/Style_tvValueRounded"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    tools:text="05"/>
+            </LinearLayout>
+
+            <View
+                style="@style/Style_vDivider"
+                android:layout_marginBottom="@dimen/_15sdp"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

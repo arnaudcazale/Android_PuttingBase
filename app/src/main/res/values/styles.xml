@@ -1,0 +1,192 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowLightStatusBar">true</item>
+
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+
+    <style name="AppTheme.FullScreen">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="MySwitchCompat" parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorControlActivated">@color/colorRedLight</item>
+    </style>
+
+    <style name="Style_vDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_marginTop">@dimen/_5sdp</item>
+        <item name="android:layout_marginStart">@dimen/_5sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_5sdp</item>
+        <item name="android:alpha">0.1</item>
+        <item name="android:background">@color/colorDivider</item>
+    </style>
+
+    <style name="Style_hDivider">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginTop">@dimen/_5sdp</item>
+        <item name="android:layout_marginStart">@dimen/_5sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_5sdp</item>
+        <item name="android:alpha">0.1</item>
+        <item name="android:background">@color/colorDivider</item>
+    </style>
+
+    <style name="Style_tvLabel">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/_5sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_5sdp</item>
+        <item name="android:layout_marginTop">@dimen/_25sdp</item>
+        <item name="android:textColor">@color/colorBlueGrey</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">@dimen/_10ssp</item>
+    </style>
+
+    <style name="Style_tvValue">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/_5sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_5sdp</item>
+        <item name="android:layout_marginTop">@dimen/_5sdp</item>
+        <item name="android:textColor">@color/colorTvValue</item>
+        <item name="android:textSize">@dimen/_15ssp</item>
+    </style>
+
+    <style name="Style_ivDashboardMenu">
+        <item name="android:layout_width">@dimen/_120sdp</item>
+        <item name="android:layout_height">@dimen/_120sdp</item>
+    </style>
+
+    <style name="Style_tvDashboard">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/colorTvDashboard</item>
+        <item name="android:textSize">@dimen/_15ssp</item>
+    </style>
+
+    <style name="Style_tvTitle" parent="@style/Style_tvDashboard">
+        <item name="android:textSize">@dimen/_17ssp</item>
+    </style>
+
+    <style name="Style_civButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="Style_tvValueRounded">
+        <item name="android:layout_width">@dimen/_35sdp</item>
+        <item name="android:layout_height">@dimen/_35sdp</item>
+        <item name="android:background">@drawable/btn_selected</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:gravity">center</item>
+        <item name="android:visibility">invisible</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">@dimen/_15ssp</item>
+    </style>
+
+    <style name="Style_tvFrequency">
+        <item name="android:layout_width">@dimen/_28sdp</item>
+        <item name="android:layout_height">@dimen/_28sdp</item>
+        <item name="android:background">@drawable/bg_btn_selector</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@drawable/tv_freq_selector</item>
+        <item name="android:layout_marginStart">@dimen/_5sdp</item>
+        <item name="android:textSize">@dimen/_11ssp</item>
+        <item name="android:button">@null</item>
+    </style>
+
+    <style name="Style_tvCancel">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/_37sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_5sdp</item>
+        <item name="android:layout_marginStart">@dimen/_5sdp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/drawable_btn_cancel</item>
+        <item name="android:drawablePadding">@dimen/_10sdp</item>
+        <item name="android:drawableTint">@color/colorWhite</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingBottom">@dimen/_8sdp</item>
+        <item name="android:paddingEnd">@dimen/_15sdp</item>
+        <item name="android:paddingStart">@dimen/_15sdp</item>
+        <item name="android:paddingTop">@dimen/_8sdp</item>
+        <item name="android:textColor">@color/colorDivider</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+    </style>
+
+    <style name="Style_tvConfirm">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/_37sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_5sdp</item>
+        <item name="android:layout_marginStart">@dimen/_5sdp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/drawable_btn_cancel</item>
+        <item name="android:backgroundTint">#FF990000</item>
+        <item name="android:backgroundTintMode">src_over</item>
+        <item name="android:drawablePadding">@dimen/_10sdp</item>
+        <item name="android:drawableTint">@color/colorWhite</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingBottom">@dimen/_8sdp</item>
+        <item name="android:paddingEnd">@dimen/_15sdp</item>
+        <item name="android:paddingStart">@dimen/_15sdp</item>
+        <item name="android:paddingTop">@dimen/_8sdp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+    </style>
+
+    <style name="Style_tvConnect">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/_35sdp</item>
+        <item name="android:layout_marginStart">@dimen/_5sdp</item>
+        <item name="android:layout_marginTop">@dimen/_20sdp</item>
+        <item name="android:background">@drawable/drawable_btn_connect</item>
+        <item name="android:drawablePadding">@dimen/_10sdp</item>
+        <item name="android:drawableTint">@color/colorWhite</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:gravity">center</item>
+        <item name="android:foreground">@drawable/bg_selectable_item</item>
+        <item name="android:paddingBottom">@dimen/_8sdp</item>
+        <item name="android:paddingEnd">@dimen/_10sdp</item>
+        <item name="android:paddingStart">@dimen/_10sdp</item>
+        <item name="android:paddingTop">@dimen/_8sdp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">@dimen/_13ssp</item>
+    </style>
+
+    <style name="Style_tvLabel.Style_tvValueSetting">
+        <item name="android:layout_width">@dimen/_32sdp</item>
+        <item name="android:layout_height">@dimen/_32sdp</item>
+        <item name="android:layout_marginEnd">0dp</item>
+        <item name="android:layout_marginStart">@dimen/_3sdp</item>
+        <item name="android:layout_marginTop">@dimen/_10sdp</item>
+        <item name="android:background">@drawable/bg_btn_rounded</item>
+        <item name="android:gravity">center</item>
+        <item name="android:text">00</item>
+        <item name="android:textColor">@color/colorTvValue</item>
+        <item name="android:textSize">@dimen/_16ssp</item>
+    </style>
+
+    <style name="Style_tvLabel.Style_tvValueTitleSetting">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_marginTop">@dimen/_5sdp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+</resources>
