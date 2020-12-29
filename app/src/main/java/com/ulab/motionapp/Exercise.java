@@ -206,6 +206,9 @@ public class Exercise {
             if (listener != null){
                 listener.onRegularityChange(regularity[0], regularity[1]);
             }
+
+            //End of session
+            clearData();
         }
     }
 
@@ -332,19 +335,16 @@ public class Exercise {
 
     private Float[] analysisImpactPosition()
     {
-        Float [] PyawTab = new Float [this.nbrSeries];
-        Float [] PpitchTab = new Float [this.nbrSeries];
-        Float [] returnArray = new Float [this.nbrSeries];
+        Float Pyaw;
+        Float Ppitch;
+        Float [] returnArray = new Float [2];
 
         //yaw/pitch = mean des index de -1 à +1 (before and after impact)
-        PyawTab[currentSerie-1] = (yawTab[currentSerie-1][24] + yawTab[currentSerie-1][25]) / 2;
-        PpitchTab[currentSerie-1] = (pitchTab[currentSerie-1][24] + pitchTab[currentSerie-1][25]) / 2;
+        Pyaw = (yawTab[currentSerie-1][24] + yawTab[currentSerie-1][25]) / 2;
+        Ppitch = (pitchTab[currentSerie-1][24] + pitchTab[currentSerie-1][25]) / 2;
 
-        //Log.d("Exercise ", "PyawTab->" + PyawTab[currentSerie-1]);
-        //Log.d("Exercise ", "PpitchTab->" + PpitchTab[currentSerie-1]);
-
-        returnArray[0] = PyawTab[currentSerie-1];
-        returnArray[1] = PpitchTab[currentSerie-1];
+        returnArray[0] = Pyaw;
+        returnArray[1] = Ppitch;
 
         return returnArray;
     }
@@ -352,23 +352,21 @@ public class Exercise {
     private String analysisImpactAcceleration()
     {
         String Accel = new String();
-        Float [][] AccelTab = new Float [this.nbrSeries][10];
+        Float [] AccelTab = new Float [10];
 
         for( int i = 0; i < 10; i++)
         {
-            AccelTab[currentSerie-1][i] = accZTab[currentSerie-1][24-i];
+            AccelTab[i] = accZTab[currentSerie-1][24-i];
         }
 
-        //Log.d("Exercise ", "AccZTab->" + Arrays.toString(AccelTab[currentSerie-1]));
-
         //Find max
-        Float maxVal = AccelTab[currentSerie-1][0];
+        Float maxVal = AccelTab[0];
         int idxMax = 0;
-        for(int i = 1; i < AccelTab[currentSerie-1].length; i++)
+        for(int i = 1; i < AccelTab.length; i++)
         {
-            if(AccelTab[currentSerie-1][i] > maxVal)
+            if(AccelTab[i] > maxVal)
             {
-                maxVal = AccelTab[currentSerie-1][i];
+                maxVal = AccelTab[i];
                 idxMax = i;
             }
         }
@@ -461,13 +459,13 @@ public class Exercise {
             accZTab[currentSerie-1][i] = accZBuffer.get(i);
         }
 
-        /*for(int i =0; i < nbrSeries; i++)
+        for(int i =0; i < nbrSeries; i++)
         {
             Log.d("Exercise copy", "rollTab->" + Arrays.toString(rollTab[i]));
             Log.d("Exercise copy", "pitchTab->" + Arrays.toString(pitchTab[i]));
             Log.d("Exercise copy", "yawTab->" + Arrays.toString(yawTab[i]));
             Log.d("Exercise copy", "AccZTab->" + Arrays.toString(accZTab[i]));
-        }*/
+        }
     }
 
     private void mean()
@@ -483,5 +481,36 @@ public class Exercise {
         rollCalibration = meanRoll / 50;
         pitchCalibration = meanPitch / 50;
         yawCalibration = meanYaw / 50;
+    }
+
+    private void clearData()
+    {
+        isCalibrating = true;
+
+        for(int i = 0; i<nbrSeries; i++)
+        {
+            for(int j = 0; j< 50; j++)
+            {
+                this.rollTab[i][j]  = 0f;
+                this.pitchTab[i][j]  = 0f;
+                this.yawTab[i][j]  = 0f;
+                this.accZTab[i][j]  = 0f;
+            }
+
+            this.impactTrajectory[i] = "";
+            this.impactPosition[i][0] = 0f;
+            this.impactPosition[i][1] = 0f;
+            this.impactAcceleration[i] = "";
+            this.speed[i] = 0f;
+        }
+
+        for(int i = 0; i< 6; i++)
+        {
+            this.pitchMeanStdDev[i] = 0f;
+            this.yawMeanStdDev[i] = 0f;
+        }
+
+        this.regularity[0] = "";
+        this.regularity[1] = "";
     }
 }

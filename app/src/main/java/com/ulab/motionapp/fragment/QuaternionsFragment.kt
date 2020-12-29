@@ -487,7 +487,7 @@ class QuaternionsFragment : BaseBLEFragment() {
         }
 
         override fun onEulerAngleChanged(bluetoothDevice: BluetoothDevice, roll: Float, pitch: Float, yaw: Float) {
-        //Log.d("InitialConfiguration", "onEulerAngleChanged = " + bluetoothDevice.address + " roll = " + roll + " pitch = " + pitch + " yaw = " + yaw)
+        Log.d("InitialConfiguration", "onEulerAngleChanged = " + bluetoothDevice.address + " roll = " + roll + " pitch = " + pitch + " yaw = " + yaw)
         //Log.e("InitialConfiguration", "count value = " + count)
         //Let's drift disappear
         if( (count >= validDataNbr) && !

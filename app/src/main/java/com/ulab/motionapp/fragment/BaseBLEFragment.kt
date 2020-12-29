@@ -85,7 +85,7 @@ abstract class BaseBLEFragment : BaseFragment(), EasyPermissions.PermissionCallb
     //Arnaud///////////////////////////////////////////////////
     var start = false;
     var dataReady: Boolean = false;
-    val validDataNbr: Int = 500;
+    val validDataNbr: Int = 1000;
     var count: Int = 0;
     var nbrSeries: Int = 5;
     var tvImpact_traj: TextView? = null
@@ -115,6 +115,14 @@ abstract class BaseBLEFragment : BaseFragment(), EasyPermissions.PermissionCallb
             Log.d("ExerciseListener", "onRegularityChange " + yaw + pitch);
             val string = "Yaw = $yaw Pitch = $pitch"
             tvImpact_reg!!.text = string
+
+            //Set up UI for end session and stop impact notifs
+            mThingySdkManager!!.enableImpactNotifications(mThingySdkManager!!.connectedDevices[0], false)
+
+            ivStop.isChecked = false;
+            ivStart.isChecked = true;
+            start = false;
+
         }
     }
     var exercise: Exercise = Exercise(nbrSeries, mlistener)
@@ -619,6 +627,7 @@ abstract class BaseBLEFragment : BaseFragment(), EasyPermissions.PermissionCallb
 
         } else if (view.id == ivStop.id) {
 
+            start = false
             /*m_string = "*STOP"
             m_string_command = "STOP"
             parseCommand()
@@ -635,10 +644,10 @@ abstract class BaseBLEFragment : BaseFragment(), EasyPermissions.PermissionCallb
 //                    }
             }*/
 
-            mThingySdkManager!!.enableEulerNotifications(mThingySdkManager!!.connectedDevices[0], false)
-            Log.e("configureNotifications", "disable euler notifications " )
-            mThingySdkManager!!.enableGravityVectorNotifications(mThingySdkManager!!.connectedDevices[0], false)
-            Log.e("configureNotifications", "Enable impact notifications " )
+            //mThingySdkManager!!.enableEulerNotifications(mThingySdkManager!!.connectedDevices[0], false)
+            //Log.e("configureNotifications", "disable euler notifications " )
+            //mThingySdkManager!!.enableGravityVectorNotifications(mThingySdkManager!!.connectedDevices[0], false)
+            //Log.e("configureNotifications", "Enable impact notifications " )
             mThingySdkManager!!.enableImpactNotifications(mThingySdkManager!!.connectedDevices[0], false)
             Log.e("configureNotifications", "Enable impact notifications " )
             try {
