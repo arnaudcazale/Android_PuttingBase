@@ -7,6 +7,8 @@ public class XpertNode {
     private XpertNodeName name;
     private String parameters [];
     public byte sensorMask;
+
+    
     /*sensorMask is coded into 1 byte: Heading/Gravity/Euler/Quaternions/Raw/Impact(LSB)
     example: 0x20 -> Heading notif are authorized
              0x01 -> Impact notifs are authorized*/
