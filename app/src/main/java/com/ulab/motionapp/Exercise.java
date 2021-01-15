@@ -1,8 +1,6 @@
-package com.ulab.motionapp.custom;
+package com.ulab.motionapp;
 
 import android.util.Log;
-
-import com.ulab.motionapp.ExerciseListener;
 
 import org.apache.commons.collections4.queue.CircularFifoQueue;
 
@@ -14,7 +12,7 @@ import java.util.Collections;
 import static java.lang.Math.abs;
 
 
-public class ExerciseTest {
+public class Exercise {
 
     private ExerciseListener listener;
 
@@ -52,7 +50,7 @@ public class ExerciseTest {
     public String [] impactAcceleration;
     public Float [] speed;
 
-    public ExerciseTest(int nbrSeries, ExerciseListener listener)
+    public Exercise(int nbrSeries, ExerciseListener listener)
     {
         this.listener = listener;
 
