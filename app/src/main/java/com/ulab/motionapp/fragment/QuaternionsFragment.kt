@@ -12,7 +12,6 @@ import android.transition.TransitionInflater
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import com.ulab.motionapp.Exercise
 import com.ulab.motionapp.MotionApp
 import com.ulab.motionapp.R
 import com.ulab.motionapp.common.Constants
@@ -26,7 +25,6 @@ import kotlinx.android.synthetic.main.fragment_quaternions.*
 import kotlinx.android.synthetic.main.header_back_with_setting.*
 import no.nordicsemi.android.thingylib.ThingyListenerHelper
 import no.nordicsemi.android.thingylib.ThingySdkManager
-import java.io.FileOutputStream
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 
@@ -446,10 +444,10 @@ class QuaternionsFragment : BaseBLEFragment() {
         //Log.d("InitialConfiguration", "onGravityVectorValueChanged = " + bluetoothDevice.address + " x = " + x + " y = " + y + " z = " + z)
 
         //Fill buffer if start is clicked and drift has stabilized
-        if(start && dataReady)
+        /*if(start && dataReady)
         {
             exercise.addRawData(x, y, z)
-        }
+        }*/
 
         val motion = ThingyDevice()
         motion.X_gravity = x
@@ -490,7 +488,7 @@ class QuaternionsFragment : BaseBLEFragment() {
         Log.d("InitialConfiguration", "onEulerAngleChanged = " + bluetoothDevice.address + " roll = " + roll + " pitch = " + pitch + " yaw = " + yaw)
         //Log.e("InitialConfiguration", "count value = " + count)
         //Let's drift disappear
-        if( (count >= validDataNbr) && !
+        /*if( (count >= validDataNbr) && !
                 dataReady){
             dataReady = true
             val msg = Toast.makeText(context, "Data is ready", Toast.LENGTH_LONG)
@@ -501,7 +499,7 @@ class QuaternionsFragment : BaseBLEFragment() {
         if(start && dataReady)
         {
             exercise.addEulerData(roll, pitch, yaw)
-        }
+        }*/
 
         //Fill DB
         val motion = ThingyDevice()
@@ -570,7 +568,7 @@ class QuaternionsFragment : BaseBLEFragment() {
 
     override fun onImpactValueChanged(bluetoothDevice: BluetoothDevice, impact: Int) {
         Log.e("InitialConfiguration", "onImpactValueChanged = " + bluetoothDevice.address + " impact = " + impact )
-        exercise.impactDetect();
+        //exercise.impactDetect();
     }
 
     override fun onHiddenChanged(hidden: Boolean) {

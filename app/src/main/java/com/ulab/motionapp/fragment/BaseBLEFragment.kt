@@ -8,13 +8,11 @@ import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothManager
 import android.content.*
-import android.graphics.Color
 import android.location.LocationManager
 import android.os.*
 import android.support.design.widget.Snackbar
 import android.support.v4.content.ContextCompat
 import android.util.Log
-import android.view.Gravity
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -22,17 +20,16 @@ import android.widget.Toast
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
 import com.google.android.gms.tasks.Task
-import com.ulab.motionapp.Exercise
 import com.ulab.motionapp.ExerciseListener
 import com.ulab.motionapp.MotionApp
 import com.ulab.motionapp.R
 import com.ulab.motionapp.ThingyService
 import com.ulab.motionapp.activity.HomeActivity
 import com.ulab.motionapp.common.Constants
-import com.ulab.motionapp.common.Constants.Companion.IS_DEBUG
 import com.ulab.motionapp.common.Constants.Companion.MAX_DEVICES_FOR_CONNECTION
 import com.ulab.motionapp.common.DateUtils
 import com.ulab.motionapp.common.Utils
+import com.ulab.motionapp.custom.Exercise
 import com.ulab.motionapp.db.Session
 import kotlinx.android.synthetic.main.fragment_euler.*
 import kotlinx.android.synthetic.main.fragment_gravity.*
@@ -48,6 +45,8 @@ import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.experimental.and
+
 
 /**
  * Created by R.S. on 04/10/18
@@ -82,7 +81,10 @@ abstract class BaseBLEFragment : BaseFragment(), EasyPermissions.PermissionCallb
         private const val STATE_4: Int = 4
     }
 
-    //Arnaud///////////////////////////////////////////////////
+    //Arnaud
+    var exercise: Exercise = Exercise(Exercise.exerciseName.PUTTING_BASE)
+
+    ///////////////////////////////////////////////////////////
     var start = false;
     var dataReady: Boolean = false;
     val validDataNbr: Int = 1000;
@@ -125,7 +127,7 @@ abstract class BaseBLEFragment : BaseFragment(), EasyPermissions.PermissionCallb
 
         }
     }
-    var exercise: Exercise = Exercise(nbrSeries, mlistener)
+    //var exercise: Exercise = Exercise(nbrSeries, mlistener)
     ////////////////////////////////////////////////////////////
 
      // guillaume : Type should be enum
@@ -1252,10 +1254,10 @@ abstract class BaseBLEFragment : BaseFragment(), EasyPermissions.PermissionCallb
             }*/
 
             /**Enable Euler and Raw Notification **/
-            mThingySdkManager!!.enableEulerNotifications(mThingySdkManager!!.connectedDevices[0], true)
-            //mThingySdkManager!!.enableRawDataNotifications(mThingySdkManager!!.connectedDevices[0], true)
-            mThingySdkManager!!.enableGravityVectorNotifications(mThingySdkManager!!.connectedDevices[0], true)
-            //mThingySdkManager!!.enableNotifications(mThingySdkManager!!.connectedDevices[0], true)
+            enableNotifications();
+            //mThingySdkManager!!.enableEulerNotifications(mThingySdkManager!!.connectedDevices[0], true)
+            //mThingySdkManager!!.enableGravityVectorNotifications(mThingySdkManager!!.connectedDevices[0], true)
+
 
             //Log.e("configureNotifications", "Enable FSR notifications " )
             try {
@@ -1280,6 +1282,48 @@ abstract class BaseBLEFragment : BaseFragment(), EasyPermissions.PermissionCallb
             onDevicesConnected()
         }
 
+    }
+
+    private fun enableNotifications()
+    {
+        for (i in 0..exercise.nbrXpN - 1 )
+        {
+            Log.d("enableNotifications", "exercise.nbrXpN = " + exercise.nbrXpN )
+            var mask = exercise.getXpNmask(i)
+            Log.d("enableNotifications", "mask = " + mask )
+            if((mask and 0x01).equals(1)) {
+                mThingySdkManager!!.enableImpactNotifications(mThingySdkManager!!.connectedDevices[0], true)
+                Log.d("enableNotifications", "enableImpactNotifications" )
+            }else if((mask and 0x02).equals(1)){
+                mThingySdkManager!!.enableRawDataNotifications(mThingySdkManager!!.connectedDevices[0], true)
+                Log.d("enableNotifications", "enableRawDataNotifications" )
+            }else if((mask and 0x03).equals(1)){
+                mThingySdkManager!!.enableQuaternionNotifications(mThingySdkManager!!.connectedDevices[0], true)
+                Log.d("enableNotifications", "enableQuaternionNotifications" )
+            }else if((mask and 0x04).equals(1)){
+                mThingySdkManager!!.enableEulerNotifications(mThingySdkManager!!.connectedDevices[0], true)
+                Log.d("enableNotifications", "enableEulerNotifications" )
+            }else if((mask and 0x05).equals(1)){
+                mThingySdkManager!!.enableGravityVectorNotifications(mThingySdkManager!!.connectedDevices[0], true)
+                Log.d("enableNotifications", "enableGravityVectorNotifications" )
+            }else if((mask and 0x06).equals(1)){
+                mThingySdkManager!!.enableHeadingNotifications(mThingySdkManager!!.connectedDevices[0], true)
+                Log.d("enableNotifications", "enableHeadingNotifications" )
+            }
+        }
+        for (i in 0..exercise.nbrXpS ) {
+
+        }
+        for (i in 0..exercise.nbrXpI ) {
+
+        }
+        for (i in 0..exercise.nbrXpA ) {
+
+        }
+        for (i in 0..exercise.nbrXpR ) {
+
+        }
+        //exercise.getXpTotalNbr()
     }
 
     /**
