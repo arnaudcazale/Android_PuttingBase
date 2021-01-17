@@ -85,11 +85,11 @@ abstract class BaseBLEFragment : BaseFragment(), EasyPermissions.PermissionCallb
     var exercise: Exercise = Exercise(Exercise.exerciseName.PUTTING_BASE)
 
     ///////////////////////////////////////////////////////////
-    var start = false;
-    var dataReady: Boolean = false;
-    val validDataNbr: Int = 1000;
-    var count: Int = 0;
-    var nbrSeries: Int = 5;
+    var start = false
+    var dataReady: Boolean = false
+    val validDataNbr: Int = 1000
+    var count: Int = 0
+    var validImpact: Int = 0
     var tvImpact_traj: TextView? = null
     var tvImpact_pos: TextView? = null
     var tvImpact_acc: TextView? = null
@@ -97,33 +97,33 @@ abstract class BaseBLEFragment : BaseFragment(), EasyPermissions.PermissionCallb
     var tvImpact_reg: TextView? = null
     val mlistener = object : ExerciseListener{
         override fun onImpactTrajectoryChange(trajectory: String) {
-            Log.d("ExerciseListener", "onImpactTrajectoryChange " + trajectory);
+            Log.d("ExerciseListener", "onImpactTrajectoryChange " + trajectory)
             tvImpact_traj!!.text = trajectory
         }
         override fun onImpactPositionChange(yaw: Float, pitch: Float) {
-            Log.d("ExerciseListener", "onImpactPositionChange " + yaw + pitch);
+            Log.d("ExerciseListener", "onImpactPositionChange " + yaw + pitch)
             val string = "Yaw = $yaw Pitch = $pitch"
             tvImpact_pos!!.text = string
         }
         override fun onImpactAccelerationChange(acceleration: String) {
-            Log.d("ExerciseListener", "onImpactAccelerationChange " + acceleration);
+            Log.d("ExerciseListener", "onImpactAccelerationChange " + acceleration)
             tvImpact_acc!!.text = acceleration
         }
         override fun onSpeedChange(speed: Float) {
-            Log.d("ExerciseListener", "onSpeedChange " + speed);
+            Log.d("ExerciseListener", "onSpeedChange " + speed)
             tvImpact_speed!!.text = speed.toString()
         }
         override fun onRegularityChange(yaw: String, pitch: String) {
-            Log.d("ExerciseListener", "onRegularityChange " + yaw + pitch);
+            Log.d("ExerciseListener", "onRegularityChange " + yaw + pitch)
             val string = "Yaw = $yaw Pitch = $pitch"
             tvImpact_reg!!.text = string
 
             //Set up UI for end session and stop impact notifs
             mThingySdkManager!!.enableImpactNotifications(mThingySdkManager!!.connectedDevices[0], false)
 
-            ivStop.isChecked = false;
-            ivStart.isChecked = true;
-            start = false;
+            ivStop.isChecked = false
+            ivStart.isChecked = true
+            start = false
 
         }
     }
@@ -598,7 +598,7 @@ abstract class BaseBLEFragment : BaseFragment(), EasyPermissions.PermissionCallb
 
             if(dataReady){
 
-                start = true;
+                start = true
 
                 //mThingySdkManager!!.enableEulerNotifications(mThingySdkManager!!.connectedDevices[0], true)
                 //Log.e("configureNotifications", "enable euler notifications " )

@@ -441,13 +441,13 @@ class QuaternionsFragment : BaseBLEFragment() {
     }
 
     override fun onGravityVectorChanged(bluetoothDevice: BluetoothDevice, x: Float, y: Float, z: Float) {
-        Log.d("InitialConfiguration", "onGravityVectorValueChanged = " + bluetoothDevice.address + " x = " + x + " y = " + y + " z = " + z)
+        //Log.d("InitialConfiguration", "onGravityVectorValueChanged = " + bluetoothDevice.address + " x = " + x + " y = " + y + " z = " + z)
 
         //Fill buffer if start is clicked and drift has stabilized
-        /*if(start && dataReady)
+        if(start && dataReady)
         {
-            exercise.addRawData(x, y, z)
-        }*/
+            exercise.buffer[0].addAccData(x, y, z)
+        }
 
         val motion = ThingyDevice()
         motion.X_gravity = x
@@ -485,21 +485,22 @@ class QuaternionsFragment : BaseBLEFragment() {
         }
 
         override fun onEulerAngleChanged(bluetoothDevice: BluetoothDevice, roll: Float, pitch: Float, yaw: Float) {
-        Log.d("InitialConfiguration", "onEulerAngleChanged = " + bluetoothDevice.address + " roll = " + roll + " pitch = " + pitch + " yaw = " + yaw)
+        //Log.d("InitialConfiguration", "onEulerAngleChanged = " + bluetoothDevice.address + " roll = " + roll + " pitch = " + pitch + " yaw = " + yaw);
         //Log.e("InitialConfiguration", "count value = " + count)
+
         //Let's drift disappear
-        /*if( (count >= validDataNbr) && !
+        if( (count >= validDataNbr) && !
                 dataReady){
             dataReady = true
             val msg = Toast.makeText(context, "Data is ready", Toast.LENGTH_LONG)
             msg.show()
-        }else count++;
+        }else count++
 
         //Fill buffer if start is clicked and drift has stabilized
         if(start && dataReady)
         {
-            exercise.addEulerData(roll, pitch, yaw)
-        }*/
+            exercise.buffer[0].addEulerData(roll, pitch, yaw)
+        }
 
         //Fill DB
         val motion = ThingyDevice()
@@ -567,8 +568,18 @@ class QuaternionsFragment : BaseBLEFragment() {
     override fun onCommandValueChanged(bluetoothDevice: BluetoothDevice, answer: ByteArray) {}
 
     override fun onImpactValueChanged(bluetoothDevice: BluetoothDevice, impact: Int) {
-        Log.e("InitialConfiguration", "onImpactValueChanged = " + bluetoothDevice.address + " impact = " + impact )
-        //exercise.impactDetect();
+        //Log.e("InitialConfiguration", "onImpactValueChanged = " + bluetoothDevice.address + " impact = " + impact )
+
+        //Fill buffer if start is clicked and drift has stabilized
+        if(start && dataReady)
+        {
+            validImpact++
+
+            if(validImpact  <= exercise.reps)
+            {
+                exercise.buffer[0].impactDetect();
+            }
+        }
     }
 
     override fun onHiddenChanged(hidden: Boolean) {
