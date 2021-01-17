@@ -6,7 +6,7 @@ public class XpertNode {
 
     private XpertNodeName name;
     private String parameters [];
-    public byte sensorMask;
+    public int sensorMask;
 
     
     /*sensorMask is coded into 1 byte: Heading/Gravity/Euler/Quaternions/Raw/Impact(LSB)

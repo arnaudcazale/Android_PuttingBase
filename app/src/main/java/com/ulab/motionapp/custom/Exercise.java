@@ -72,7 +72,7 @@ public class Exercise {
     {
         return nbrXpN + nbrXpS +nbrXpI +nbrXpA +nbrXpR;
     }
-    public byte getXpNmask(int XpnIdx)
+    public int getXpNmask(int XpnIdx)
     {
         return XpN[XpnIdx].sensorMask;
     }

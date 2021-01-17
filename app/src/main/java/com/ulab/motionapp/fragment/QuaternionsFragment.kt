@@ -441,7 +441,7 @@ class QuaternionsFragment : BaseBLEFragment() {
     }
 
     override fun onGravityVectorChanged(bluetoothDevice: BluetoothDevice, x: Float, y: Float, z: Float) {
-        //Log.d("InitialConfiguration", "onGravityVectorValueChanged = " + bluetoothDevice.address + " x = " + x + " y = " + y + " z = " + z)
+        Log.d("InitialConfiguration", "onGravityVectorValueChanged = " + bluetoothDevice.address + " x = " + x + " y = " + y + " z = " + z)
 
         //Fill buffer if start is clicked and drift has stabilized
         /*if(start && dataReady)

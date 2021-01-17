@@ -1286,27 +1286,32 @@ abstract class BaseBLEFragment : BaseFragment(), EasyPermissions.PermissionCallb
 
     private fun enableNotifications()
     {
-        for (i in 0..exercise.nbrXpN - 1 )
+        // connectedDevices[x] must be linked with the appropriate thingy, depending of XpertNode type (XpN, XpS, etc...)
+        for (i in 0..(exercise.nbrXpN - 1) )
         {
-            Log.d("enableNotifications", "exercise.nbrXpN = " + exercise.nbrXpN )
             var mask = exercise.getXpNmask(i)
-            Log.d("enableNotifications", "mask = " + mask )
-            if((mask and 0x01).equals(1)) {
+
+            if( (mask and 0x01) == 1 ) {
                 mThingySdkManager!!.enableImpactNotifications(mThingySdkManager!!.connectedDevices[0], true)
                 Log.d("enableNotifications", "enableImpactNotifications" )
-            }else if((mask and 0x02).equals(1)){
+            }
+            if( (mask shr 1) and 0x01 == 1 ){
                 mThingySdkManager!!.enableRawDataNotifications(mThingySdkManager!!.connectedDevices[0], true)
                 Log.d("enableNotifications", "enableRawDataNotifications" )
-            }else if((mask and 0x03).equals(1)){
+            }
+            if( (mask shr 2) and 0x01 == 1 ){
                 mThingySdkManager!!.enableQuaternionNotifications(mThingySdkManager!!.connectedDevices[0], true)
                 Log.d("enableNotifications", "enableQuaternionNotifications" )
-            }else if((mask and 0x04).equals(1)){
+            }
+            if( (mask shr 3) and 0x01 == 1 ){
                 mThingySdkManager!!.enableEulerNotifications(mThingySdkManager!!.connectedDevices[0], true)
                 Log.d("enableNotifications", "enableEulerNotifications" )
-            }else if((mask and 0x05).equals(1)){
+            }
+            if( (mask shr 4) and 0x01 == 1 ){
                 mThingySdkManager!!.enableGravityVectorNotifications(mThingySdkManager!!.connectedDevices[0], true)
                 Log.d("enableNotifications", "enableGravityVectorNotifications" )
-            }else if((mask and 0x06).equals(1)){
+            }
+            if( (mask shr 5) and 0x01 == 1 ){
                 mThingySdkManager!!.enableHeadingNotifications(mThingySdkManager!!.connectedDevices[0], true)
                 Log.d("enableNotifications", "enableHeadingNotifications" )
             }
