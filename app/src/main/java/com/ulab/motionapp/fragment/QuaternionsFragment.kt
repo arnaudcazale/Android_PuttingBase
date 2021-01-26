@@ -645,8 +645,8 @@ class QuaternionsFragment : BaseBLEFragment() {
 
         selectedType = TYPE_QUATERNION
 
-        header_tvTitle.text = ""
-        Handler().postDelayed({ header_tvTitle.text = getString(R.string.quaternions) }, Constants.TITLE_ANIMATION)
+        //header_tvTitle.text = ""
+        //Handler().postDelayed({ header_tvTitle.text = getString(R.string.quaternions) }, Constants.TITLE_ANIMATION)
 
         activity!!.registerReceiver(mLocationProviderChangedReceiver, IntentFilter(LocationManager.MODE_CHANGED_ACTION))
 
