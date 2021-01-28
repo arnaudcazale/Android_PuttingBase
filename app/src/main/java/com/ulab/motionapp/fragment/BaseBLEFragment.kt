@@ -1251,6 +1251,8 @@ abstract class BaseBLEFragment : BaseFragment(), EasyPermissions.PermissionCallb
             } catch (e: Exception) {
             }*/
 
+            mThingySdkManager!!.setMotionProcessingFrequency(mThingySdkManager!!.connectedDevices[0], 50)
+
             /**Enable Euler and Raw Notification **/
             mThingySdkManager!!.enableEulerNotifications(mThingySdkManager!!.connectedDevices[0], true)
             //mThingySdkManager!!.enableRawDataNotifications(mThingySdkManager!!.connectedDevices[0], true)
