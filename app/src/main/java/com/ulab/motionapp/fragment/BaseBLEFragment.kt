@@ -1222,6 +1222,7 @@ abstract class BaseBLEFragment : BaseFragment(), EasyPermissions.PermissionCallb
     /**Manage 1 connected device**/
     fun manage1DevicesStatus()
     {
+
         Log.d(TAG, "connectedDevices.size = " + mThingySdkManager!!.connectedDevices.size)
         if ( mThingySdkManager!!.connectedDevices.size == MAX_DEVICES_FOR_CONNECTION ) {
 
