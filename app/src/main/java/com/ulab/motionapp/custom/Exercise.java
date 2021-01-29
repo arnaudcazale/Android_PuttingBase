@@ -2,7 +2,7 @@ package com.ulab.motionapp.custom;
 
 import android.util.Log;
 
-public class Exercise {
+public class Exercise{
 
     public enum exerciseName{PUTTING_BASE, SPARE1, SPARE2, SPARE3}
     public enum ruleName{IMPACT_TRAJECTORY, IMPACT_POSITION, IMPACT_ACCELERATION, SPEED, REGULARITY}
@@ -32,6 +32,7 @@ public class Exercise {
     public ruleName [] rules;
     public boolean ringBuffer;
     public RingBuffer [] buffer;
+    public RingBuffer.RingBufferListener[] bufferListener;
     public int templateResume;
 
     public Exercise(exerciseName name)
@@ -94,11 +95,19 @@ public class Exercise {
         if(this.ringBuffer)
         {
             this.timeCalib = 3;
-
             this.buffer = new RingBuffer[getXpTotalNbr()];
+
+            //this.bufferListener = new RingBuffer.RingBufferListener[getXpTotalNbr()];
+
             for (int i = 0; i < this.nbrXpN; i++)
             {
-                this.buffer[i] = new RingBuffer(50, getXpNmask(i), timeCalib );
+                this.buffer[i] = new RingBuffer(50, getXpNmask(i), timeCalib);
+                this.buffer[i].setListener(new RingBuffer.RingBufferListener() {
+                    @Override
+                    public void onBufferReady(int data) {
+                        Log.d("Exercise Listener", "onBufferReady " + data );
+                    }
+                });
             }
         }
     }
@@ -109,10 +118,10 @@ public class Exercise {
         this.nbrRules = 5;
         this.rules = new ruleName[nbrRules];
         this.rules[0] = ruleName.IMPACT_TRAJECTORY;
-        this.rules[0] = ruleName.IMPACT_POSITION;
-        this.rules[0] = ruleName.IMPACT_ACCELERATION;
-        this.rules[0] = ruleName.SPEED;
-        this.rules[0] = ruleName.REGULARITY;
+        this.rules[1] = ruleName.IMPACT_POSITION;
+        this.rules[2] = ruleName.IMPACT_ACCELERATION;
+        this.rules[3] = ruleName.SPEED;
+        this.rules[4] = ruleName.REGULARITY;
     }
 
     public int getXpTotalNbr()

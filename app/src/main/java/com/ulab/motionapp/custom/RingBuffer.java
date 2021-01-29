@@ -6,6 +6,13 @@ import org.apache.commons.collections4.queue.CircularFifoQueue;
 
 public class RingBuffer {
 
+    public interface RingBufferListener {
+
+        void onBufferReady(int data);
+    }
+
+    private RingBufferListener listener;
+
     public int bufferSize;
     public int bufferMask;
     public boolean isCalibrating;
@@ -70,6 +77,11 @@ public class RingBuffer {
         this.pitchTab = new Float [bufferSize];
         this.yawTab   = new Float [bufferSize];
         this.accZTab  = new Float [bufferSize];
+    }
+
+    public void setListener(RingBufferListener listener)
+    {
+        this.listener = listener;
     }
 
     public void impactDetect()
@@ -138,7 +150,7 @@ public class RingBuffer {
         if( this.bufferEulerReady && this.bufferAccReady )
         {
             resetFlags();
-            //TODO applyRules();
+            listener.onBufferReady(10);
         }
     }
 

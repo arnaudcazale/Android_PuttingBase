@@ -494,7 +494,15 @@ class QuaternionsFragment : BaseBLEFragment() {
             dataReady = true
             val msg = Toast.makeText(context, "Data is ready", Toast.LENGTH_LONG)
             msg.show()
-        }else count++
+            //UI update
+            ivStart.isChecked = true
+            pBar!!.visibility = View.GONE
+            tvUlabPBar!!.visibility = View.GONE
+        }else
+        {
+            count++
+            pBar!!.progress = count
+        }
 
         //Fill buffer if start is clicked and drift has stabilized
         if(start && dataReady)
@@ -638,6 +646,9 @@ class QuaternionsFragment : BaseBLEFragment() {
         tvImpact_speed = view.findViewById(R.id.tvImpact_speed)
         tvImpact_reg = view.findViewById(R.id.tvImpact_reg)
 
+        pBar = view.findViewById(R.id.progressBar)
+        tvUlabPBar = view.findViewById(R.id.activity_home_tvUlabPBar)
+
         manageStatus(STATUS_DISCONNECTED)
 
         ivConnect.isChecked = true
@@ -654,8 +665,8 @@ class QuaternionsFragment : BaseBLEFragment() {
 
         selectedType = TYPE_QUATERNION
 
-        header_tvTitle.text = ""
-        Handler().postDelayed({ header_tvTitle.text = getString(R.string.quaternions) }, Constants.TITLE_ANIMATION)
+        //header_tvTitle.text = ""
+        //Handler().postDelayed({ header_tvTitle.text = getString(R.string.quaternions) }, Constants.TITLE_ANIMATION)
 
         activity!!.registerReceiver(mLocationProviderChangedReceiver, IntentFilter(LocationManager.MODE_CHANGED_ACTION))
 

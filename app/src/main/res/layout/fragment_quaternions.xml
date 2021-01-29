@@ -122,6 +122,27 @@
             </LinearLayout>
 
             <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/activity_home_tvUlabPBar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="@style/Style_tvValue"
+                android:singleLine="true"
+                android:text="Drift compensation"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:visibility="gone"
+              />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:max="1000"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:visibility="gone"
+                />
+
+            <android.support.v7.widget.AppCompatTextView
                 style="@style/Style_tvLabel"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:text="@string/trajectory_impact"/>
@@ -181,6 +202,8 @@
                 style="@style/Style_tvLabel"
                 android:text="@string/uLab1"
                 android:visibility="gone"/>
+
+
 
             <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/activity_home_tvUlab1"

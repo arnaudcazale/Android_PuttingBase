@@ -15,6 +15,7 @@ import android.support.v4.content.ContextCompat
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import com.google.android.gms.common.api.ResolvableApiException
@@ -128,6 +129,9 @@ abstract class BaseBLEFragment : BaseFragment(), EasyPermissions.PermissionCallb
         }
     }
     //var exercise: Exercise = Exercise(nbrSeries, mlistener)
+    var tvUlabPBar: TextView? = null
+    var pBar: ProgressBar? = null
+
     ////////////////////////////////////////////////////////////
 
      // guillaume : Type should be enum
@@ -876,7 +880,7 @@ abstract class BaseBLEFragment : BaseFragment(), EasyPermissions.PermissionCallb
             // guillaume : this fragment should not be responsible for this
             if (tvULab1Label != null) {
                 tvULab1Label!!.text = "Motion"
-                tvElapsedTime!!.text = ""
+                //tvElapsedTime!!.text = ""
             }
             // guillaume : this fragment should not be responsible for this
             if (tvULab2Label != null) {
@@ -1232,7 +1236,7 @@ abstract class BaseBLEFragment : BaseFragment(), EasyPermissions.PermissionCallb
             manageStatus(STATUS_CONNECTED)
             stopScanForBLE()
 
-            if (tvULab1Label != null) {
+            /*if (tvULab1Label != null) {
                 var indice = 0
                 for (i in mThingySdkManager!!.connectedDevices.indices) {
                     if (mThingySdkManager!!.connectedDevices[i].name == "back"){
@@ -1241,25 +1245,11 @@ abstract class BaseBLEFragment : BaseFragment(), EasyPermissions.PermissionCallb
                 }
                 tvULab1Label!!.tag = mThingySdkManager!!.connectedDevices[indice].address
                 tvULab1Label!!.text = "Motion - " + mThingySdkManager!!.connectedDevices[indice].name
-            }
-
-            /**Enable FSR Notification for the 4 devices**/
-            /*mThingySdkManager!!.enableFsrDataNotifications(mThingySdkManager!!.connectedDevices[0], true)
-            Log.e("configureNotifications", "Enable FSR notifications " )
-            try {
-                Log.d(TAG, "Thread sleeping for 200 milliseconds")
-                Thread.sleep(Constants.BLE_DELAY)
-                Log.d(TAG, "Thread slept for 200 milliseconds")
-            } catch (e: Exception) {
             }*/
 
             /**Enable Euler and Raw Notification **/
             enableNotifications();
-            //mThingySdkManager!!.enableEulerNotifications(mThingySdkManager!!.connectedDevices[0], true)
-            //mThingySdkManager!!.enableGravityVectorNotifications(mThingySdkManager!!.connectedDevices[0], true)
 
-
-            //Log.e("configureNotifications", "Enable FSR notifications " )
             try {
                 Log.d(TAG, "Thread sleeping for 200 milliseconds")
                 Thread.sleep(Constants.BLE_DELAY)
@@ -1268,13 +1258,10 @@ abstract class BaseBLEFragment : BaseFragment(), EasyPermissions.PermissionCallb
             }
 
             ivDisconnect.isChecked = true
-            ivStart.isChecked = true
             command_text.isEnabled = true
-            //chkGravity.isEnabled = true
-            //chkEuler.isEnabled = true
-            //chkHeading.isEnabled = true
-            //chkAcc.isEnabled = true
-            //chkQuat.isEnabled = true
+
+            tvUlabPBar!!.visibility = View.VISIBLE
+            pBar!!.visibility = View.VISIBLE
 
             isDisconnectClicked = false
             currentState = STATE_3
