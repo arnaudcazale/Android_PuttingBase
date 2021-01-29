@@ -607,7 +607,7 @@ abstract class BaseBLEFragment : BaseFragment(), EasyPermissions.PermissionCallb
                 //mThingySdkManager!!.enableEulerNotifications(mThingySdkManager!!.connectedDevices[0], true)
                 //Log.e("configureNotifications", "enable euler notifications " )
                 mThingySdkManager!!.enableImpactNotifications(mThingySdkManager!!.connectedDevices[0], true)
-                Log.e("configureNotifications", "Enable impact notifications " )
+                Log.d("configureNotifications", "Enable impact notifications " )
                 try {
                     Log.d(TAG, "Thread sleeping for 200 milliseconds")
                     Thread.sleep(Constants.BLE_DELAY)
@@ -655,7 +655,7 @@ abstract class BaseBLEFragment : BaseFragment(), EasyPermissions.PermissionCallb
             //mThingySdkManager!!.enableGravityVectorNotifications(mThingySdkManager!!.connectedDevices[0], false)
             //Log.e("configureNotifications", "Enable impact notifications " )
             mThingySdkManager!!.enableImpactNotifications(mThingySdkManager!!.connectedDevices[0], false)
-            Log.e("configureNotifications", "Enable impact notifications " )
+            Log.d("configureNotifications", "Disable impact notifications " )
             try {
                 Log.d(TAG, "Thread sleeping for 200 milliseconds")
                 Thread.sleep(Constants.BLE_DELAY)

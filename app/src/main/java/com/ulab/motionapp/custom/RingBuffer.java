@@ -4,6 +4,8 @@ import android.util.Log;
 
 import org.apache.commons.collections4.queue.CircularFifoQueue;
 
+import java.util.Arrays;
+
 public class RingBuffer {
 
     public interface RingBufferListener {
@@ -17,6 +19,7 @@ public class RingBuffer {
     public int bufferMask;
     public boolean isCalibrating;
     private int calCount;
+    private int impactCount;
     private int bufferEulerCount;
     private int bufferAccCount;
     private boolean bufferEulerReady;
@@ -53,6 +56,7 @@ public class RingBuffer {
         this.isCalibrating = true;
         this.bufferSize = 50;
         this.calCount = 0;
+        this.impactCount = 0;
         this.bufferEulerReady = false;
         this.bufferAccReady = false;
 
@@ -87,7 +91,8 @@ public class RingBuffer {
     public void impactDetect()
     {
         this.bufferImpact = true;
-        Log.d("RingBuffer", "impactDetect = " + this.bufferImpact);
+        this.impactCount++;
+        Log.d("RingBuffer", "impactDetect = " + this.impactCount);
     }
 
     public void addEulerData(Float rollData, Float pitchData, Float yawData)
@@ -150,8 +155,26 @@ public class RingBuffer {
         if( this.bufferEulerReady && this.bufferAccReady )
         {
             resetFlags();
-            listener.onBufferReady(10);
+            copyBuffer();
+            listener.onBufferReady(impactCount);
         }
+    }
+
+    private void copyBuffer()
+    {
+        //Log.d("Exercise", "copy");
+        for(int i =0; i< bufferSize; i++) {
+            //copy Element into output tab
+            rollTab[i]  = rollBuffer.get(i) - rollCalibration;
+            pitchTab[i] = pitchBuffer.get(i) - pitchCalibration;
+            yawTab[i]   = yawBuffer.get(i) - yawCalibration;
+            accZTab[i] = accZBuffer.get(i);
+        }
+
+        Log.d("Exercise copy", "rollTab->" + Arrays.toString(rollTab));
+        Log.d("Exercise copy", "pitchTab->" + Arrays.toString(pitchTab));
+        Log.d("Exercise copy", "yawTab->" + Arrays.toString(yawTab));
+        Log.d("Exercise copy", "AccZTab->" + Arrays.toString(accZTab));
     }
 
     private void mean()

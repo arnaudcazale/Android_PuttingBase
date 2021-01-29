@@ -5,7 +5,6 @@ import android.util.Log;
 public class Exercise{
 
     public enum exerciseName{PUTTING_BASE, SPARE1, SPARE2, SPARE3}
-    public enum ruleName{IMPACT_TRAJECTORY, IMPACT_POSITION, IMPACT_ACCELERATION, SPEED, REGULARITY}
 
     public String sport;
     public exerciseName name;
@@ -29,7 +28,7 @@ public class Exercise{
     public int timeCalib;
     public int positionCalib;
     public int nbrRules;
-    public ruleName [] rules;
+    public Rule [] rules;
     public boolean ringBuffer;
     public RingBuffer [] buffer;
     public RingBuffer.RingBufferListener[] bufferListener;
@@ -97,15 +96,14 @@ public class Exercise{
             this.timeCalib = 3;
             this.buffer = new RingBuffer[getXpTotalNbr()];
 
-            //this.bufferListener = new RingBuffer.RingBufferListener[getXpTotalNbr()];
-
             for (int i = 0; i < this.nbrXpN; i++)
             {
                 this.buffer[i] = new RingBuffer(50, getXpNmask(i), timeCalib);
                 this.buffer[i].setListener(new RingBuffer.RingBufferListener() {
                     @Override
-                    public void onBufferReady(int data) {
-                        Log.d("Exercise Listener", "onBufferReady " + data );
+                    public void onBufferReady(int impactCount) {
+                        Log.d("Exercise Listener", "onBufferReady " + impactCount );
+                        applyRules(impactCount);
                     }
                 });
             }
@@ -116,12 +114,37 @@ public class Exercise{
     {
         //Activate rules for PUTTING_BASE exercise
         this.nbrRules = 5;
-        this.rules = new ruleName[nbrRules];
-        this.rules[0] = ruleName.IMPACT_TRAJECTORY;
-        this.rules[1] = ruleName.IMPACT_POSITION;
-        this.rules[2] = ruleName.IMPACT_ACCELERATION;
-        this.rules[3] = ruleName.SPEED;
-        this.rules[4] = ruleName.REGULARITY;
+        this.rules = new Rule[this.nbrRules];
+        this.rules[0] = new Rule(Rule.ruleName.IMPACT_TRAJECTORY);
+        this.rules[1] = new Rule(Rule.ruleName.IMPACT_POSITION);
+        this.rules[2] = new Rule(Rule.ruleName.IMPACT_ACCELERATION);
+        this.rules[3] = new Rule(Rule.ruleName.SPEED);
+        this.rules[4] = new Rule(Rule.ruleName.REGULARITY);
+    }
+
+    private void applyRules(int ruleNbr)
+    {
+        int idx = ruleNbr - 1;
+        switch(this.rules[idx].name)
+        {
+            case IMPACT_TRAJECTORY:
+                this.rules[idx].analysisImpactTrajectory();
+                break;
+            case IMPACT_POSITION:
+                this.rules[idx].analysisImpactPosition();
+                break;
+            case IMPACT_ACCELERATION:
+                this.rules[idx].analysisImpactAcceleration();
+                break;
+            case SPEED:
+                this.rules[idx].analysisCorrelationSpeed();
+                break;
+            case REGULARITY:
+                this.rules[idx].analysisRegularity();
+                break;
+
+
+        }
     }
 
     public int getXpTotalNbr()
