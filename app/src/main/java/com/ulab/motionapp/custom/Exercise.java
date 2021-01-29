@@ -122,28 +122,22 @@ public class Exercise{
         this.rules[4] = new Rule(Rule.ruleName.REGULARITY);
     }
 
-    private void applyRules(int ruleNbr)
+    private void applyRules(int impactCount)
     {
-        int idx = ruleNbr - 1;
-        switch(this.rules[idx].name)
+        if(impactCount < 5)
         {
-            case IMPACT_TRAJECTORY:
-                this.rules[idx].analysisImpactTrajectory();
-                break;
-            case IMPACT_POSITION:
-                this.rules[idx].analysisImpactPosition();
-                break;
-            case IMPACT_ACCELERATION:
-                this.rules[idx].analysisImpactAcceleration();
-                break;
-            case SPEED:
-                this.rules[idx].analysisCorrelationSpeed();
-                break;
-            case REGULARITY:
-                this.rules[idx].analysisRegularity();
-                break;
+            String string = this.rules[0].analysisImpactTrajectory(this.buffer[0].yawTab, this.buffer[0].pitchTab);
+            Log.d("Exercise", "applyRules " + string );
 
+            //TODO implement other rules
+            //this.rules[1].analysisImpactPosition();
+            //this.rules[2].analysisImpactAcceleration();
+            //this.rules[3].analysisCorrelationSpeed();
 
+        }else if (impactCount == 5)
+        {
+            //TODO implement regularity
+            //this.rules[4].analysisRegularity();
         }
     }
 
