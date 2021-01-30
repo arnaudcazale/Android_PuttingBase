@@ -46,7 +46,7 @@ public class RingBuffer {
     public Float [] yawTab;
     public Float [] accZTab;
 
-    public RingBuffer(int bufferSize, int mask, int timeCalib){
+    public RingBuffer(int bufferSize, int mask){
 
         this.bufferSize = bufferSize;
         this.bufferMask = mask;
@@ -95,6 +95,12 @@ public class RingBuffer {
         Log.d("RingBuffer", "impactDetect = " + this.impactCount);
     }
 
+    public void impactReset()
+    {
+        this.impactCount = 0;
+        Log.d("RingBuffer", "impactDetect = " + this.impactCount);
+    }
+
     public void addEulerData(Float rollData, Float pitchData, Float yawData)
     {
         if(this.bufferImpact)
@@ -121,7 +127,7 @@ public class RingBuffer {
         if(this.isCalibrating)
         {
             this.calCount++;
-            if(this.calCount >= timeCalib * 50){
+            if(this.calCount >= 50){
                 this.calCount = 0;
                 this.isCalibrating = false;
                 mean();
@@ -189,9 +195,9 @@ public class RingBuffer {
             meanPitch += this.pitchBuffer.get(i);
             meanYaw += this.yawBuffer.get(i);
         }
-        this.rollCalibration = meanRoll / (this.timeCalib*this.frq);
-        this.pitchCalibration = meanPitch / (this.timeCalib*this.frq);
-        this.yawCalibration = meanYaw / (this.timeCalib*this.frq);
+        this.rollCalibration = meanRoll / (this.frq);
+        this.pitchCalibration = meanPitch / (this.frq);
+        this.yawCalibration = meanYaw / (this.frq);
     }
 
     private void resetFlags()

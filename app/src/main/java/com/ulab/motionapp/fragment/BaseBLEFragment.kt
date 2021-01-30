@@ -21,7 +21,6 @@ import android.widget.Toast
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
 import com.google.android.gms.tasks.Task
-import com.ulab.motionapp.ExerciseListener
 import com.ulab.motionapp.MotionApp
 import com.ulab.motionapp.R
 import com.ulab.motionapp.ThingyService
@@ -46,7 +45,6 @@ import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.experimental.and
 
 
 /**
@@ -82,9 +80,6 @@ abstract class BaseBLEFragment : BaseFragment(), EasyPermissions.PermissionCallb
         private const val STATE_4: Int = 4
     }
 
-    //Arnaud
-    var exercise: Exercise = Exercise(Exercise.exerciseName.PUTTING_BASE)
-
     ///////////////////////////////////////////////////////////
     var start = false
     var dataReady: Boolean = false
@@ -96,38 +91,34 @@ abstract class BaseBLEFragment : BaseFragment(), EasyPermissions.PermissionCallb
     var tvImpact_acc: TextView? = null
     var tvImpact_speed: TextView? = null
     var tvImpact_reg: TextView? = null
-    val mlistener = object : ExerciseListener{
-        override fun onImpactTrajectoryChange(trajectory: String) {
-            Log.d("ExerciseListener", "onImpactTrajectoryChange " + trajectory)
+    val mlistener = object : Exercise.ExerciseListener {
+        override fun onImpactTrajectoryChanged(trajectory: String?)
+        {
             tvImpact_traj!!.text = trajectory
         }
-        override fun onImpactPositionChange(yaw: Float, pitch: Float) {
-            Log.d("ExerciseListener", "onImpactPositionChange " + yaw + pitch)
-            val string = "Yaw = $yaw Pitch = $pitch"
-            tvImpact_pos!!.text = string
+        override fun onImpactPositionChanged(position: Array<Float?>?)
+        {
+            tvImpact_pos!!.text = "yaw =" + String.format("%.2f", position!![0]) + " pitch =" + String.format("%.2f", position!![1])
         }
-        override fun onImpactAccelerationChange(acceleration: String) {
-            Log.d("ExerciseListener", "onImpactAccelerationChange " + acceleration)
+        override fun onImpactAccelerationChanged(acceleration: String?)
+        {
             tvImpact_acc!!.text = acceleration
         }
-        override fun onSpeedChange(speed: Float) {
-            Log.d("ExerciseListener", "onSpeedChange " + speed)
-            tvImpact_speed!!.text = speed.toString()
+        override fun onImpactSpeedChanged(speed: Float?)
+        {
+            tvImpact_speed!!.text = String.format("%.4f", speed)
         }
-        override fun onRegularityChange(yaw: String, pitch: String) {
-            Log.d("ExerciseListener", "onRegularityChange " + yaw + pitch)
-            val string = "Yaw = $yaw Pitch = $pitch"
-            tvImpact_reg!!.text = string
-
-            //Set up UI for end session and stop impact notifs
-            mThingySdkManager!!.enableImpactNotifications(mThingySdkManager!!.connectedDevices[0], false)
-
-            ivStop.isChecked = false
-            ivStart.isChecked = true
-            start = false
-
+        override fun onRegularityChanged(regularity: Array<String?>?)
+        {
+            Log.d("ExerciseListener", "onImpactTrajectoryChange " )
+            tvImpact_reg!!.text = "yaw =" + regularity!![0].toString() + " pitch =" + regularity!![1].toString()
+            endOfExercise();
         }
     }
+
+    //Arnaud
+    var exercise: Exercise = Exercise(Exercise.exerciseName.PUTTING_BASE, mlistener)
+
     //var exercise: Exercise = Exercise(nbrSeries, mlistener)
     var tvUlabPBar: TextView? = null
     var pBar: ProgressBar? = null
@@ -279,6 +270,21 @@ abstract class BaseBLEFragment : BaseFragment(), EasyPermissions.PermissionCallb
             timer!!.cancel()
             calendar = null
         }
+    }
+
+    fun endOfExercise()
+    {
+        //Reset Impact count of each buffers
+        for(i in 0 .. (exercise.nbrXpN-1))
+        {
+            exercise.buffer[i].impactReset();
+        }
+        //Set up UI for end session and stop impact notifs
+        mThingySdkManager!!.enableImpactNotifications(mThingySdkManager!!.connectedDevices[0], false)
+        ivStop.isChecked = false
+        ivStart.isChecked = true
+        start = false
+        validImpact = 0
     }
 
     /**
@@ -603,6 +609,8 @@ abstract class BaseBLEFragment : BaseFragment(), EasyPermissions.PermissionCallb
             if(dataReady){
 
                 start = true
+
+                //TODO Erase all textViews
 
                 //mThingySdkManager!!.enableEulerNotifications(mThingySdkManager!!.connectedDevices[0], true)
                 //Log.e("configureNotifications", "enable euler notifications " )

@@ -10,14 +10,28 @@ public class Rule {
 
     public ruleName name;
 
+    public String output_impactTrajectory;
+    public Float [] output_impactPosition;
+    public String output_acceleration;
+    public Float output_speed;
+    public String [] output_regularity;
+    public Float output_pitchMeanStdDev;
+    public Float output_yawMeanStdDev;
+
     public Rule(ruleName name)
     {
         this.name = name;
+        this.output_impactTrajectory = "";
+        this.output_impactPosition = new Float [2];
+        this.output_acceleration = "";
+        this.output_speed = 0f;
+        this.output_regularity = new String[2];
+        this.output_pitchMeanStdDev = 0f;
+        this.output_yawMeanStdDev = 0f;
     }
 
-    public String analysisImpactTrajectory(Float [] yawTab, Float [] pitchTab)
+    public void analysisImpactTrajectory(Float [] yawTab, Float [] pitchTab)
     {
-        Log.d("Rule Class", "analysisImpactTrajectory ");
         boolean DbIsPositive = false;
         boolean DaIsPositive = false;
         String Pi = "";
@@ -83,17 +97,14 @@ public class Rule {
 
         //Log.e("Exercise", "pitchStdDev "  +  Arrays.toString(pitchStdDev[currentSerie-1]));
 
-        Float yawMeanStdDev = 0f;
-        Float pitchMeanStdDev = 0f;
-
         for( int i = 0; i < 6; i++)
         {
-            yawMeanStdDev +=  yawStdDev[i];
-            pitchMeanStdDev +=  pitchStdDev[i];
+            output_yawMeanStdDev +=  yawStdDev[i];
+            output_pitchMeanStdDev +=  pitchStdDev[i];
         }
 
-        yawMeanStdDev   /= 6;
-        pitchMeanStdDev /= 6;
+        this.output_yawMeanStdDev   /= 6;
+        this.output_pitchMeanStdDev /= 6;
 
         //Log.e("Exercise", "bfYawTab "  +  Arrays.toString(bfYawTab[currentSerie-1]));
         //Log.e("Exercise", "afYawTab "  +  Arrays.toString(afYawTab[currentSerie-1]));
@@ -124,32 +135,112 @@ public class Rule {
             Pi = "ext_int";
         }
 
-        //reset values
-        DbIsPositive = false;
-        DaIsPositive = false;
-
-
-        return Pi;
+        this.output_impactTrajectory = Pi;
     }
 
-    public void analysisImpactPosition()
+    public void analysisImpactPosition(Float [] yawTab, Float [] pitchTab)
     {
-        Log.d("Rule Class", "analysisImpactPosition ");
+        Float Pyaw;
+        Float Ppitch;
+
+        //yaw/pitch = mean des index de -1 à +1 (before and after impact)
+        Pyaw = (yawTab[24] + yawTab[25]) / 2;
+        Ppitch = (pitchTab[24] + pitchTab[25]) / 2;
+
+        this.output_impactPosition[0] = Pyaw;
+        this.output_impactPosition[1] = Ppitch;
     }
 
-    public void analysisImpactAcceleration()
+    public void analysisImpactAcceleration(Float [] accZTab)
     {
-        Log.d("Rule Class", "analysisImpactAcceleration ");
+        String accel = "";
+        Float [] AccelTab = new Float [10];
+
+        for( int i = 0; i < 10; i++)
+        {
+            AccelTab[i] = accZTab[24-i];
+        }
+
+        //Find max
+        Float maxVal = AccelTab[0];
+        int idxMax = 0;
+        for(int i = 1; i < AccelTab.length; i++)
+        {
+            if(AccelTab[i] > maxVal)
+            {
+                maxVal = AccelTab[i];
+                idxMax = i;
+            }
+        }
+
+        if(idxMax <= 1)
+        {
+            accel = "positive";
+        }else{
+            accel = "negative";
+        }
+
+        this.output_acceleration =  accel;
     }
 
-    public void analysisCorrelationSpeed()
+    public void analysisCorrelationSpeed(Float [] accZTab)
     {
-        Log.d("Rule Class", "analysisCorrelationSpeed ");
+        Float mean;
+        Float m = 0.375f;
+        Float speedy;
+        Float c;
+
+        mean = ( accZTab[24] + accZTab[25] ) / 2;
+        speedy = mean*0.02f; //Speed in m/s
+        c = 0.5f*m*(speedy*speedy)*1000;
+
+        output_speed = c;
     }
 
-    public void analysisRegularity()
+    public void analysisRegularity(int nbrSeries, Float [] yawMeanStdDev, Float [] pitchMeanStdDev)
     {
-        Log.d("Rule Class", "analysisRegularity ");
+        String returnStringYaw ="", returnStringPitch = "";
+        Float meanPitchStdDev = 0f, meanYawStdDev = 0f;
+        String [] returnArray = new String [2];
+
+        for( int i = 0; i < nbrSeries; i++)
+        {
+            meanYawStdDev +=   yawMeanStdDev[i];
+            meanPitchStdDev += pitchMeanStdDev[i];
+        }
+
+        meanYawStdDev /= nbrSeries;
+        meanPitchStdDev /= nbrSeries;
+
+        //regularity on yaw
+        if( (meanYawStdDev <= 0.5) ) {
+            returnStringYaw = "Très bon";
+        }else if( (meanYawStdDev > 0.5) && (meanYawStdDev <= 0.8) ){
+            returnStringYaw = "Bon";
+        }else if( (meanYawStdDev > 0.8) && (meanYawStdDev <= 1.3) ){
+            returnStringYaw = "Moyen";
+        }else if( (meanYawStdDev > 1.3) && (meanYawStdDev <= 1.8) ){
+            returnStringYaw = "Faible";
+        }else if( (meanYawStdDev > 1.8) ){
+            returnStringYaw = "Très faible";
+        }
+
+        //regularity on pitch
+        if( (meanPitchStdDev <= 0.5) ) {
+            returnStringPitch = "Très bon";
+        }else if( (meanPitchStdDev > 0.5) && (meanPitchStdDev <= 0.8) ){
+            returnStringPitch = "Bon";
+        }else if( (meanPitchStdDev > 0.8) && (meanPitchStdDev <= 1.3) ){
+            returnStringPitch = "Moyen";
+        }else if( (meanPitchStdDev > 1.3) && (meanPitchStdDev <= 1.8) ){
+            returnStringPitch = "Faible";
+        }else if( (meanPitchStdDev > 1.8) ){
+            returnStringPitch = "Très faible";
+        }
+
+        this.output_regularity[0] = returnStringYaw;
+        this.output_regularity[1] = returnStringPitch;
+
     }
 
 }
