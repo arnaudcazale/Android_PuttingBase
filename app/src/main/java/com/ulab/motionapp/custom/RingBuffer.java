@@ -98,6 +98,7 @@ public class RingBuffer {
     public void impactReset()
     {
         this.impactCount = 0;
+        this.isCalibrating = true;
         Log.d("RingBuffer", "impactDetect = " + this.impactCount);
     }
 
