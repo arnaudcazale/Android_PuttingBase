@@ -119,6 +119,8 @@ abstract class BaseBLEFragment : BaseFragment(), EasyPermissions.PermissionCallb
     //Arnaud
     var exercise: Exercise = Exercise(Exercise.exerciseName.PUTTING_BASE, mlistener)
 
+    //TODO set to 50 Hz each time, deal with disconect & drift compensation
+
     //var exercise: Exercise = Exercise(nbrSeries, mlistener)
     var tvUlabPBar: TextView? = null
     var pBar: ProgressBar? = null
