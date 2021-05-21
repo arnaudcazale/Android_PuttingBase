@@ -9,6 +9,7 @@ import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothManager
 import android.content.*
 import android.location.LocationManager
+import android.media.MediaPlayer
 import android.os.*
 import android.support.design.widget.Snackbar
 import android.support.v4.content.ContextCompat
@@ -251,6 +252,14 @@ abstract class BaseBLEFragment : BaseFragment(), EasyPermissions.PermissionCallb
 
                         timeDiff = lastStoppedTime + (calNow.timeInMillis - calendar!!.timeInMillis)
                         val diffInHHMMSS = DateUtils.diffInHHMMSS(timeDiff)
+                        val diffInSeconds = timeDiff/1000
+
+                        if(diffInSeconds >= 5){
+                            val audio: MediaPlayer = MediaPlayer.create(activity!!.applicationContext, R.raw.synthese)
+                            audio . start ()
+                            stopTimer()
+                        }
+
 
                         if (tvElapsedTime != null) {
                             tvElapsedTime!!.text = diffInHHMMSS
@@ -287,6 +296,9 @@ abstract class BaseBLEFragment : BaseFragment(), EasyPermissions.PermissionCallb
         ivStart.isChecked = true
         start = false
         validImpact = 0
+
+        //PLay audio file after 5 seconds
+        startTimer()
     }
 
     /**
@@ -791,8 +803,8 @@ abstract class BaseBLEFragment : BaseFragment(), EasyPermissions.PermissionCallb
                 }
 
                 /** start task responsible for display data to UI every seconds **/
-                startTimer()
-                isTimerStarted = true
+                //startTimer()
+                //isTimerStarted = true
 
             }
 

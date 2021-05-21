@@ -48,7 +48,7 @@ public class FileUtils {
 
     public static void playBeepSound(final Context context) {
         if (mediaPlayer == null) {
-            mediaPlayer = MediaPlayer.create(context, R.raw.beep);
+            mediaPlayer = MediaPlayer.create(context, R.raw.synthese);
         }
         if (!mediaPlayer.isPlaying()) {
             mediaPlayer.start();
