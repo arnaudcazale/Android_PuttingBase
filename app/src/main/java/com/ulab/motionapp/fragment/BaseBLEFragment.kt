@@ -256,7 +256,7 @@ abstract class BaseBLEFragment : BaseFragment(), EasyPermissions.PermissionCallb
 
                         if(diffInSeconds >= 5){
                             val audio: MediaPlayer = MediaPlayer.create(activity!!.applicationContext, R.raw.synthese)
-                            audio . start ()
+                            audio.start ()
                             stopTimer()
                         }
 
@@ -274,8 +274,8 @@ abstract class BaseBLEFragment : BaseFragment(), EasyPermissions.PermissionCallb
      * Used to stop the timer task
      */
     fun stopTimer() {
-        //lastStoppedTime = 0
-        lastStoppedTime = timeDiff
+        lastStoppedTime = 0
+        //lastStoppedTime = timeDiff
         isTimerStarted = false
         if (timer != null) {
             timer!!.cancel()
